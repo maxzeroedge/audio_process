@@ -1,0 +1,7 @@
+.vscode
+py3_*
+*.wav
+*.mp3
+node_modules
+__pycache__
+*lock.yaml
