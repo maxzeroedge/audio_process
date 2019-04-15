@@ -1,5 +1,6 @@
 import wave
 import get_freq as Get_freq
+import write_wav as Write_wav
 
 def process_wave(inFile):
     audio_frames = None
@@ -23,7 +24,7 @@ def invert_waves(data):
     return [ max_val - d for d in data ]
 
 if __name__=="__main__":
-    out = process_wave("../Tobu-Candyland.wav")
+    out = process_wave("../[GMV]Battlescars.wav")
     wave_data = Get_freq.get_frequency(out)
     indx = 0
     for f in wave_data['frequency_data']:
@@ -37,4 +38,5 @@ if __name__=="__main__":
             continue
         wave_data['channel_data'][indx] = invert_waves(f)
         indx += 1
+    Write_wav.write_to_wave(out[1], wave_data)
     Get_freq.plot_graphs(wave_data['channel_data'], wave_data['frequency_data'])
