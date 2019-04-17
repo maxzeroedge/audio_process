@@ -24,7 +24,7 @@ def invert_waves(data):
     return [ max_val - d for d in data ]
 
 if __name__=="__main__":
-    out = process_wave("../Tobu-Candyland.wav")
+    out = process_wave("../[GMV]Battlescars.wav")
     wave_data = Get_freq.get_frequency(out)
     indx = 0
     """ for f in wave_data['frequency_data']:
