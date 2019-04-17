@@ -1,5 +1,6 @@
 import wave
 import get_freq as Get_freq
+import wave_save as WaveSave
 
 def process_wave(inFile):
     audio_frames = None
@@ -26,7 +27,7 @@ if __name__=="__main__":
     out = process_wave("../Tobu-Candyland.wav")
     wave_data = Get_freq.get_frequency(out)
     indx = 0
-    for f in wave_data['frequency_data']:
+    """ for f in wave_data['frequency_data']:
         if(indx % 2 == 0 ):
             continue
         wave_data['frequency_data'][indx] = invert_waves(f)
@@ -36,5 +37,10 @@ if __name__=="__main__":
         if(indx % 2 == 0 ):
             continue
         wave_data['channel_data'][indx] = invert_waves(f)
-        indx += 1
-    Get_freq.plot_graphs(wave_data['channel_data'], wave_data['frequency_data'])
+        indx += 1 """
+    # Get_freq.plot_graphs(wave_data['channel_data'], wave_data['frequency_data'])
+    save_wave = []
+    for i in range(len(wave_data['frequency_data'][0])):
+        for j in range(len(wave_data['frequency_data'])):
+            save_wave.append(wave_data['frequency_data'][j][i])
+    WaveSave.write_wav_file('Tobu.wav', save_wave, out[1])
